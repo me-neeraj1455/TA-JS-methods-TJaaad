@@ -48,3 +48,39 @@ Example:
 16. `slice`
 17. `split`
 18. `substring`
+
+
+``let user='Altcampus'
+user.replace('campus','school');
+'Altschool'
+let user='Altcampus'
+user.replace('s','l');
+'Altcampul'
+let user='Altcampus is an alternate school of programming in the Himanchal Dharmashala India'
+user.replace('s','l');
+
+user.slice();
+'Altcampus is an alternate school of programming in the Himanchal Dharmashala India'
+let user='Altcampus is an alternate school of programming in the Himanchal Dharmashala India'
+
+user.slice(" ");
+'Altcampus is an alternate school of programming in the Himanchal Dharmashala India'
+let user='Altcampus is an alternate school of programming in the Himanchal Dharmashala India'
+
+user.split(' ');
+(12) ['Altcampus', 'is', 'an', 'alternate', 'school', 'of', 'programming', 'in', 'the', 'Himanchal', 'Dharmashala', 'India']0: "Altcampus"1: "is"2: "an"3: "alternate"4: "school"5: "of"6: "programming"7: "in"8: "the"9: "Himanchal"10: "Dharmashala"11: "India"length: 12[[Prototype]]: Array(0)
+let user='Altcampus is an alternate school of programming in the Himanchal Dharmashala India'
+
+user.substring(10,5);
+'mpus '
+let user='Altcampus is an alternate school of programming in the Himanchal Dharmashala India'
+user.replace('s','l');
+
+user.slice(-10,-1);
+'hala Indi'
+let user='Altcampus is an alternate school of programming in the Himanchal Dharmashala India'
+user.replace('s','l');
+
+user.slice(-10,-1);
+'hala Indi'
+
