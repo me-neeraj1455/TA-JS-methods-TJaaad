@@ -22,6 +22,7 @@ fruits.shift();
 console.log(fruits);
 // Add a new element to the start ('Guava') and shift the index of all other to one higher value
 fruits.unshift(`Guava`);
+fruits.splice(0, 0, `Guava`);
 console.log(fruits);
 // Add a new element to the start ('Dragon Fruit') and shift the index of all other to one higher value
 fruits.unshift(`Dragon Fruit`);
@@ -39,27 +40,28 @@ console.log(fruits.slice(5));
 // Create another array named moreFruits with values ['Berries', 'Melons']
 let moreFruits = ["Berries", "Melons"];
 // Concat moreFruits into fruits array (re-assign so the value gets updated)
-let allFruits = moreFruits.concat(fruits);
+fruits = fruits.concat(fruits);
 
 // Log the name of all fruit in console
-console.log(allFruits);
+fruits.forEach(fruit => console.log(fruits));
 // Convert each fruit name to lowercase and log it
-for (eachFruit of allFruits) {
+for (eachFruit of fruits) {
   console.log(eachFruit.toLowerCase());
 }
 // Convert all fruits name into lowercase and store in new array named lowercaseFruits
-let lowercaseFruits = [];
-allFruits.forEach(function (cb) {
-  return lowercaseFruits.push(cb.toLowerCase());
-});
-console.log(lowercaseFruits);
+let lowercaseFruits = fruits.map(fruit => fruits.toLowerCase());
+// allFruits.forEach(function (cb) {
+//   return lowercaseFruits.push(cb.toLowerCase());
+// });
+// console.log(lowercaseFruits);
+
 // Convert all fruits name into uppercase and store in new array named uppercaseFruits
 
-let uppercaseFruits = [];
-allFruits.forEach(function (cb) {
-  return uppercaseFruits.push(cb.toUpperCase());
-});
-console.log(uppercaseFruits);
+let uppercaseFruits = fruits.map(fruit => fruits.toUpperCase());
+// allFruits.forEach(function (cb) {
+//   return uppercaseFruits.push(cb.toUpperCase());
+// });
+// console.log(uppercaseFruits);
 
 //
 
@@ -68,7 +70,7 @@ let numbersTwo = [1, 2, [3, 4, [5, 6]]];
 let numbersThree = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
 
 // Convert the numbers array to one level element. Remove sub-arrays to individual elements and log them
-// console.log(numbers.flat());
+console.log(numbers.flat());
 // Convert the numbersTwo array to one level element. Remove all sub-arrays to individual elements and log them.
 console.log(numbersTwo.flat(2));
 // (for multiple level flat accepts argument by default it's 1 `array.flat(2)`)
@@ -92,21 +94,21 @@ console.log(tripleNumbers);
 let halfNumbers = numbersThree.flat(Infinity).map(ele => ele / 2);
 console.log(halfNumbers);
 // Create a new variable named oddNumbers that store all the odd numbers in numbersThree array
-let oddNumbers = [];
-numbersThree.flat(Infinity).map(function (ele) {
-  if (ele % 2 !== 0) {
-    oddNumbers.push(ele);
-  }
-});
-console.log(oddNumbers);
+let oddNumbers = numbersThree.filter(elm => ele % 2 !== 0);
+// numbersThree.flat(Infinity).map(function (ele) {
+//   if (ele % 2 !== 0) {
+//     oddNumbers.push(ele);
+//   }
+// });
+// console.log(oddNumbers);
 // Create a new variable named evenNumbers that store all the even numbers in numbersThree array
-let evenNumbers = [];
-numbersThree.flat(Infinity).map(function (ele) {
-  if (ele % 2 === 0) {
-    evenNumbers.push(ele);
-  }
-});
-console.log(evenNumbers);
+let evenNumbers = numbersThree.filter(elm => ele % 2 === 0);
+// numbersThree.flat(Infinity).map(function (ele) {
+//   if (ele % 2 === 0) {
+//     evenNumbers.push(ele);
+//   }
+// });
+// console.log(evenNumbers);
 // Find the index of 10 in numbersThree array
 console.log(numbersThree.flat(Infinity).indexOf(10));
 // Reverse the values of numbersThree array
@@ -114,6 +116,6 @@ console.log(numbersThree.flat(Infinity).reverse());
 // Reverse the values of numbersTwo array
 console.log(numbersTwo.flat(Infinity).reverse());
 // Join all fruits with '-', convert to uppercase and log it
-console.log(allFruits.join("-"));
+console.log(allFruits.join("-")).toUpperCase();
 // Join all fruits with '&', convert to lowercase and log it
-console.log(allFruits.join(" & "));
+console.log(allFruits.join(" & ")).toLowerCase();
