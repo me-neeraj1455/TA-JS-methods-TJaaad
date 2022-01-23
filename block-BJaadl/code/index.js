@@ -20,33 +20,42 @@ let lengthOfWord = words.map(arr => arr.length);
 console.log(lengthOfWord);
 
 // - Create a new array that only contains word with atleast one vowel.
-let vowelArray = words.filter(cb =>
-  cb.includes(`a` || `e` || `i` || `o` || `u`)
-);
-console.log(vowelArray);
+// let vowelArray = words.filter(cb =>
+//   cb.toLowerCase().includes(`a` || `e` || `i` || `o` || `u`)
+// );
+// console.log(vowelArray);
 
+function checkVowel(words) {
+  return (
+    words.toLowerCase().includes(`a`) ||
+    words.toLowerCase().includes(`e`) ||
+    words.toLowerCase().includes(`i`) ||
+    words.toLowerCase().includes(`o`) ||
+    words.toLowerCase().includes(`u`)
+  );
+}
+let vowelFilter = words.filter(cb => checkVowel(cb));
 // - Find the index of the word "rhythm"
-console.log(words.indexOf(`rhythm`));
+console.log(words.findIndex(cb => cb == `rhythm`));
 // - Create a new array that contians words not starting with vowel.
-let noStartVowel = words.filter(
-  arr => arr[0] !== (`a` || `e` || `i` || `o` || `u`)
-);
-console.log(noStartVowel);
+// let noWithVowel = words.filter(arr => !checkVowel(cb[0]));
+// console.log(noWithVowel);
 // - Create a new array that contianse words not ending with vowel
-let noEndVowel = words.filter(
-  arr => arr[arr.length - 1] !== (`a` || `e` || `i` || `o` || `u`)
-);
-console.log(noEndVowel);
+// let noEndWithVowel = words.filter(arr => !checkVowel(cb[cb.length - 1]));
+// console.log(noEndWithVowel);
 let numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 // - Create a sumArray function that takes an array of number as a parameter, and calculate the sum of all its numbers
-function sumArray(acc, cv) {
-  return acc + cv;
+function sumArray(array) {
+  return array.reduce((acc, cv) => {
+    acc = acc + cv;
+    return acc;
+  }, 0);
 }
-let sum = numbers.reduce(sumArray, 0);
+console.log(sumArray(numbers));
 
 // let sum = numbers.reduce((acc, cv, index, arr) => acc + cv, 0);
-console.log(sum);
+// console.log(sum);
 // - Make a new array that contains number multiplied by 3 like [6, 18, 27 ...]
 let multiplied = numbers.map(cb => cb * 3);
 console.log(multiplied);
@@ -75,15 +84,19 @@ console.log(assendingNum);
 // - Does sort mutate the original array?//yes
 (" sort()method  mutate the original array and return the reference . ");
 // - Find the sum of the numbers in the array.
-// let sum = numbers.reduce((acc, cv, index, arr) => acc + cv, 0);
+let sum = numbers.reduce((acc, cv, index, arr) => acc + cv, 0);
 //- Write a function averageNumbers that receives an array of numbers and calculate the average of the numbers
 
-function averageNumbers(acc, cv) {
-  return acc + cv;
+function averageNumbers(array) {
+  return (
+    array.reduce((acc, cv) => {
+      acc = acc + cv;
+      return acc;
+    }, 0) / array.length
+  );
 }
 
-let average = numbers.reduce(averageNumbers, 0);
-console.log(average / numbers.length);
+console.log(averageNumbers(numbers));
 
 let strings = [
   "seat",
@@ -99,8 +112,13 @@ let strings = [
 ];
 
 // - Write a function averageWordLength that receives an array of words2 and calculate the average length of the words.
-function averageWordLength(array) {
-  return array.length;
+function averageWordLength(words) {
+  return (
+    words
+      .map(w => w.length)
+      .reduce((acc, cv) => {
+        return acc + cv;
+      }, 0) / words.length
+  );
 }
-let wordLenth = strings.map(averageWordLength);
-console.log(wordLenth);
+console.log(averageWordLength(words));
