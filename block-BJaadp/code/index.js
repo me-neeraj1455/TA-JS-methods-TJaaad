@@ -21,58 +21,58 @@ let persons = [
 // });
 // console.log(allGrade);
 
-let allGradeAvg =
-  persons.reduce((acc, cv) => {
-    return acc + cv.grade;
-  }, 0) / persons.length;
+// let allGradeAvg =
+//   persons.reduce((acc, cv) => {
+//     return acc + cv.grade;
+//   }, 0) / persons.length;
 // console.log(allGrade);
 // Find the average grade of male
-let male = persons.filter(cb => cb.sex === `M`);
-let maleGradeAvg =
-  male.reduce((acc, cv) => {
-    return acc + cv.grade;
-  }, 0) / male.length;
+// let male = persons.filter(cb => cb.sex === `M`);
+// let maleGradeAvg =
+//   male.reduce((acc, cv) => {
+//     return acc + cv.grade;
+//   }, 0) / male.length;
 // console.log(maleGradeAvg);
 // Find the average grade of female
-let female = persons.filter(cb => cb.sex === `F`);
-let femaleGradeAvg =
-  female.reduce((acc, cv) => {
-    return acc + cv.grade;
-  }, 0) / female.length;
+// let female = persons.filter(cb => cb.sex === `F`);
+// let femaleGradeAvg =
+//   female.reduce((acc, cv) => {
+//     return acc + cv.grade;
+//   }, 0) / female.length;
 // console.log(femaleGradeAvg);
 // Find the highest grade
-let allGrade = persons.map(a => a.grade);
-let highestGrade = [...allGrade]
-  .sort((a, b) => {
-    return a - b;
-  })
-  .pop();
+// let allGrade = persons.map(a => a.grade);
+// let highestGrade = [...allGrade]
+//   .sort((a, b) => {
+//     return a - b;
+//   })
+//   .pop();
 // console.log(highestGrade);
 // Find the highest grade in male
-let maleGrade = male.map(a => a.grade);
-let highestMaleGrade = [...maleGrade]
-  .sort((a, b) => {
-    return a - b;
-  })
-  .pop();
+// let maleGrade = male.map(a => a.grade);
+// let highestMaleGrade = [...maleGrade]
+//   .sort((a, b) => {
+//     return a - b;
+//   })
+//   .pop();
 // console.log(highestMaleGrade);
 // Find the highest grade in female
-let femaleGrade = female.map(a => a.grade);
-let highestFemaleGrade = [...femaleGrade]
-  .sort((a, b) => {
-    return a - b;
-  })
-  .pop();
+// let femaleGrade = female.map(a => a.grade);
+// let highestFemaleGrade = [...femaleGrade]
+//   .sort((a, b) => {
+//     return a - b;
+//   })
+//   .pop();
 // console.log(highestFemaleGrade);
 // Find the highest grade for people whose name starts with 'J' or 'P'
-let startWithJorP = persons.filter(
-  a => a.name.charAt(0) === `J` || a.name.charAt(0) === `P`
-);
-let highestGradeOfJp = startWithJorP
-  .map(a => a.grade)
-  .sort((a, b) => {
-    a - b;
-  });
+// let startWithJorP = persons.filter(
+//   a => a.name.charAt(0) === `J` || a.name.charAt(0) === `P`
+// );
+// let highestGradeOfJp = startWithJorP
+//   .map(a => a.grade)
+//   .sort((a, b) => {
+//     a - b;
+//   });
 // console.log(highestGradeOfJp);
 const fruitBasket = [
   "banana",
@@ -96,10 +96,14 @@ that fruit has appeared in the array. Store it in new variable fruitsObj
 Output: 
 {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
 */
-let fruitsObj = fruitBasket.values();
-for (let key of fruitsObj) {
-  console.log(key);
-}
+let fruitsObs = fruitBasket.reduce((acc, cv) => {
+  if (acc[cv]) {
+    acc[cv] = acc[cv] + 1;
+  } else {
+    acc[cv] = 1;
+  }
+  return acc;
+}, {});
 
 /* 
 
@@ -107,10 +111,13 @@ Use the fruitBasket array to create an array of array. Each array will contain t
 that fruit appeared. Use the variable defined above (fruitsObj). To get all the keys of an array you can use Object.keys()
 
 Output: 
-
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]/.
 */
-
+let fruitArray = Object.keys(fruitsObs).reduce((acc, cv) => {
+  acc = acc.concat([[cv, fruitsObs[cv]]]);
+  return acc;
+}, []);
+console.log(fruitArray);
 const data = [
   [1, 2, 3],
   [4, 5, 6],
@@ -119,9 +126,10 @@ const data = [
 ];
 let newData = [];
 newData = data.reduce((acc, cv) => {
-  return acc + `, ` + cv;
+  acc = acc.concat(cv);
+  return acc;
 });
-console.log(newData);
+// console.log(newData);
 // Using reduce flat data array
 
 const dataTwo = [
@@ -133,9 +141,10 @@ const dataTwo = [
 
 // Using reduce flat dataTwo array
 let newDataTwo = dataTwo.reduce((acc, cv) => {
-  return acc + ` ,` + cv;
+  acc = acc.concat(cv.flat(Infinity));
+  return acc;
 });
-console.log(newDataTwo);
+// console.log(newDataTwo);
 /*
 
 Create these functions which accepts a number value and returns a number value:
@@ -146,23 +155,18 @@ Create these functions which accepts a number value and returns a number value:
   - `half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
 */
 function increment(num) {
-  function double(num) {
-    function decrement(num) {
-      return num - 1;
-    }
-    return decrement(num * 2);
-  }
-  return double(num + 1);
+  return num + 1;
 }
-
-// function decrement(num) {
-//   return num - 1;
-// }
-
+function double(num) {
+  return num * 2;
+}
+function decrement(num) {
+  return num - 1;
+}
 function triple(num) {
   return num * 3;
 }
-function half(num) {
+function halt(num) {
   return Math.round(num / 2);
 }
 let pipeline = [
@@ -175,7 +179,7 @@ let pipeline = [
   half,
   increment,
 ];
-console.log(pipeline(3));
+// console.log(pipeline(3));
 /*
 Using the pipeline variable that contains the collection of functions, taking the initial value 3 find the output.
 
@@ -190,6 +194,10 @@ EXAMPLE:
   ...
 */
 
+pipeline.reduce((acc, cv) => {
+  acc = cv(acc);
+  return acc;
+}, 3);
 let pipeline2 = [
   increment,
   half,
@@ -205,3 +213,9 @@ let pipeline2 = [
 ];
 
 // Find the output using pipeline2 the initial value if 8
+console.log(
+  pipeline2.reduce((acc, cv) => {
+    acc = cv(acc);
+    return acc;
+  }, 8)
+);
