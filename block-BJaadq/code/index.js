@@ -1,32 +1,101 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
-function countAllPeople() {
-  // your code goes here
-}
+// let count = got.houses.map(a => a.people.length);
+// function countAllPeople(array) {
+//   let total = 0;
+//   for (let i = 0; i < array.length; i++) {
+//     total = total + count[i];
+//   }
+//   return total;
+// }
 
-function peopleByHouses() {
-  // your code goes here
-}
+// console.log(countAllPeople(count));
 
-function everyone() {
-  // your code goes here
-}
+// let peopleCount = got.houses.map(a => a);
+// function peopleByHouses(array) {
+//   let nameOfHousePeople = [];
+//   for (let houseAndPeople of array) {
+//     nameOfHousePeople.push(
+//       `House Name is ${houseAndPeople.name} and people are ${houseAndPeople.people.length}`
+//     );
+//   }
+//   return nameOfHousePeople;
+// }
+// console.log(peopleByHouses(peopleCount));
 
-function nameWithS() {
-  // your code goes here
-}
+// let allPeople = got.houses.map(a => a.people).flat(Infinity);
+// function everyone(array) {
+//   let allPeopleName = [];
+//   for (let people of array) {
+//     allPeopleName.push(people.name);
+//   }
+//   return allPeopleName;
+// }
+// console.log(everyone(allPeople));
 
-function nameWithA() {
-  // your code goes here
-}
+// let people = got.houses.map(a => a.people).flat(Infinity);
+// let peopleName = people.map(a => a.name);
+// function nameWithS(array) {
+//   let nameStartWithS = [];
+//   for (let name of array) {
+//     if (name.charAt(0) === `s` || name.charAt(0) === `S`) {
+//       nameStartWithS.push(name);
+//     }
+//   }
+//   return nameStartWithS;
+// }
+// console.log(nameWithS(peopleName));
 
-function surnameWithS() {
-  // your code goes here
-}
+// let people = got.houses.map(a => a.people).flat(Infinity);
+// let peopleName = people.map(a => a.name);
 
-function surnameWithA() {
-  // your code goes here
+// function nameWithA(array) {
+//   let nameStartWithA = [];
+//   for (let name of array) {
+//     if (name.includes(`a`) || name.includes(`A`)) {
+//       nameStartWithA.push(name);
+//     }
+//   }
+//   return nameStartWithA;
+// }
+// console.log(nameWithA(peopleName));
+
+// let surname = got.houses
+//   .map(a => a.people)
+//   .flat(Infinity)
+//   .map(a => a.name);
+
+// function surnameWithS(array) {
+//   let withS = [];
+//   for (let name of array) {
+//     if (name.split(` `)[1].charAt(0) === `S`) {
+//       withS.push(name);
+//     }
+//   }
+//   return withS;
+// }
+// console.log(surnameWithS(surname));
+
+let surname = got.houses
+  .map(a => a.people)
+  .flat(Infinity)
+  .map(a => a.name);
+
+function surnameWithA(array) {
+  let withA = [];
+  for (let name of array) {
+    if (name.split(` `)[1].charAt(0) === `A`) {
+      withA.push(name);
+    }
+  }
+  return withA;
 }
+console.log(surnameWithA(surname));
+
+let houseName = got.houses.map(a => a.name);
+let peopleOfHouses = got.houses.map(a => a.people).flat(Infinity);
+let peopleName = peopleOfHouses.map(a => [a.name]);
+let sp = peopleName.split(`  `);
 
 function peopleNameOfAllHouses() {
   // your code goes here
@@ -44,7 +113,7 @@ console.log(everyone());
 // Output should be
 //["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "King Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy", "Margaery (Tyrell) Baratheon", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn", "Edmure Tully", "Brynden Tully", "Olenna (Redwyne) Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
 
-console.log(nameWithS(), 'with s');
+console.log(nameWithS(), "with s");
 // Output should be
 // ["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "Stannis Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn"]
 
@@ -52,7 +121,7 @@ console.log(nameWithA());
 // Output should be
 // ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon", "Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Yara Greyjoy", "Margaery Baratheon", "Loras Tyrell", "Catelyn Stark", "Lysa Arryn", "Olenna Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
 
-console.log(surnameWithS(), 'surname with s');
+console.log(surnameWithS(), "surname with s");
 // Output should be
 // ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow", "Catelyn Stark"]
 

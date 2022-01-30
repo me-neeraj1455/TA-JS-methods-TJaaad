@@ -8,7 +8,7 @@ Note: Solve all the problems without using the reduce method.
 
 - 2. Write a function called `peopleByHouses` which counts the total number of people in different houses in the `got` variable defined in `data.js` file.
 
-- 3. Write a function called `everyone` which returns a array of names of all the people in `got` variable.
+- 3. Write a function called `everyone` which  a array of names of all the people in `got` variable.
 
 - 4. Write a function called `nameWithS` which returns a array of names of all the people in `got` variable whose name includes `s` or `S`.
 
