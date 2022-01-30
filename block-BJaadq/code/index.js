@@ -1,80 +1,78 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
-// let count = got.houses.map(a => a.people.length);
-// function countAllPeople(array) {
-//   let total = 0;
-//   for (let i = 0; i < array.length; i++) {
-//     total = total + count[i];
-//   }
-//   return total;
-// }
+let count = got.houses.map(a => a.people.length).flat(Infinity);
+function countAllPeople(array) {
+  let total = 0;
+  for (let i = 0; i < array.length; i++) {
+    total = total + array[i];
+  }
+  return total;
+}
 
-// console.log(countAllPeople(count));
+console.log(countAllPeople(count));
 
-// let peopleCount = got.houses.map(a => a);
-// function peopleByHouses(array) {
-//   let nameOfHousePeople = [];
-//   for (let houseAndPeople of array) {
-//     nameOfHousePeople.push(
-//       `House Name is ${houseAndPeople.name} and people are ${houseAndPeople.people.length}`
-//     );
-//   }
-//   return nameOfHousePeople;
-// }
-// console.log(peopleByHouses(peopleCount));
+let peopleCount = got.houses.map(a => a);
+function peopleByHouses(array) {
+  let final = {};
+  got.houses.forEach(house => {
+    final[house.name] = house.people.length;
+  });
+  return final;
+}
+console.log(peopleByHouses(peopleCount));
 
-// let allPeople = got.houses.map(a => a.people).flat(Infinity);
-// function everyone(array) {
-//   let allPeopleName = [];
-//   for (let people of array) {
-//     allPeopleName.push(people.name);
-//   }
-//   return allPeopleName;
-// }
-// console.log(everyone(allPeople));
+let allPeople = got.houses.map(a => a.people).flat(Infinity);
+function everyone(array) {
+  let allPeopleName = [];
+  for (let people of array) {
+    allPeopleName.push(people.name);
+  }
+  return allPeopleName;
+}
+console.log(everyone(allPeople));
 
-// let people = got.houses.map(a => a.people).flat(Infinity);
-// let peopleName = people.map(a => a.name);
-// function nameWithS(array) {
-//   let nameStartWithS = [];
-//   for (let name of array) {
-//     if (name.charAt(0) === `s` || name.charAt(0) === `S`) {
-//       nameStartWithS.push(name);
-//     }
-//   }
-//   return nameStartWithS;
-// }
-// console.log(nameWithS(peopleName));
+let people = got.houses.map(a => a.people).flat(Infinity);
+let peopleName = people.map(a => a.name);
+function nameWithS(array) {
+  let nameStartWithS = [];
+  for (let name of array) {
+    if (name.charAt(0) === `s` || name.charAt(0) === `S`) {
+      nameStartWithS.push(name);
+    }
+  }
+  return nameStartWithS;
+}
+console.log(nameWithS(peopleName));
 
-// let people = got.houses.map(a => a.people).flat(Infinity);
-// let peopleName = people.map(a => a.name);
+let people = got.houses.map(a => a.people).flat(Infinity);
+let peopleName = people.map(a => a.name);
 
-// function nameWithA(array) {
-//   let nameStartWithA = [];
-//   for (let name of array) {
-//     if (name.includes(`a`) || name.includes(`A`)) {
-//       nameStartWithA.push(name);
-//     }
-//   }
-//   return nameStartWithA;
-// }
-// console.log(nameWithA(peopleName));
+function nameWithA(array) {
+  let nameStartWithA = [];
+  for (let name of array) {
+    if (name.includes(`a`) || name.includes(`A`)) {
+      nameStartWithA.push(name);
+    }
+  }
+  return nameStartWithA;
+}
+console.log(nameWithA(peopleName));
 
-// let surname = got.houses
-//   .map(a => a.people)
-//   .flat(Infinity)
-//   .map(a => a.name);
+let surname = got.houses
+  .map(a => a.people)
+  .flat(Infinity)
+  .map(a => a.name);
 
-// function surnameWithS(array) {
-//   let withS = [];
-//   for (let name of array) {
-//     if (name.split(` `)[1].charAt(0) === `S`) {
-//       withS.push(name);
-//     }
-//   }
-//   return withS;
-// }
-// console.log(surnameWithS(surname));
+function surnameWithS(array) {
+  let withS = [];
+  for (let name of array) {
+    if (name.split(` `)[1].charAt(0) === `S`) {
+      withS.push(name);
+    }
+  }
+  return withS;
+}
+console.log(surnameWithS(surname));
 
 let surname = got.houses
   .map(a => a.people)
@@ -92,14 +90,16 @@ function surnameWithA(array) {
 }
 console.log(surnameWithA(surname));
 
-let houseName = got.houses.map(a => a.name);
-let peopleOfHouses = got.houses.map(a => a.people).flat(Infinity);
-let peopleName = peopleOfHouses.map(a => [a.name]);
-let sp = peopleName.split(`  `);
+let allPeople = got.houses.map(a => a);
 
-function peopleNameOfAllHouses() {
-  // your code goes here
+function peopleNameOfAllHouses(array) {
+  let final = {};
+  got.houses.forEach(a => {
+    final[a.name] = a.people.map(a => a.name);
+  });
+  return final;
 }
+console.log(peopleNameOfAllHouses(allPeople));
 
 // Testing your result after writing your function
 console.log(countAllPeople());
